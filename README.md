@@ -4,9 +4,9 @@ Welcome to dAppTemplate - a simple and customizable template for creating fully 
 
 ## Solidity
 
-The Solidity section of this template includes a sample contract to demonstrate its functionality. This contract includes three public variables: owner, randomAddress, and randomNumber.
+The Solidity section of this template includes a sample contract to demonstrate its functionality. This contract includes three public variables: `owner`, `randomAddress`, and `randomNumber`.
 
-Upon deployment, the owner variable is set to msg.sender. Additionally, two setter functions have been included - one to set the randomAddress, and the other to set the randomNumber. Feel free to modify the contract and add additional functionality to suit your needs.
+Upon deployment, the owner variable is set to msg.sender. Additionally, two setter functions have been included - one to set the randomAddress, and the other to set the * `. Feel free to modify the contract and add additional functionality to suit your needs.
 
 ## Client
 
@@ -38,22 +38,25 @@ In the `model` folder, we have created a model for MongoDB to store the transact
 
 In the `routes` folder, we have different routes like the `randomNumber` route, which gets the data from the front-end and stores it to the smart contract. This transaction is completed with the help of the private key of the owner to avoid any errors.
 
-Inside the `startup` folder, we have three files:
-    -`mongodb.js`: which sets up the connection to MongoDB for the project.
-    -`web3.js`: which retrieves the JSON of the sample contract and creates its instance.
-    -`routes.js`: which sets up the necessary routes for the project's functionality.
+Inside the `startup` folder, we have three files:<br/>
+- `mongodb.js`: which sets up the connection to MongoDB for the project.<br/>
+- `web3.js`: which retrieves the JSON of the sample contract and creates its instance.<br/>
+- `routes.js`: which sets up the necessary routes for the project's functionality.<br/>
 
 # Installation
 
 To use dAppTemplate, please follow these steps:
 
-Clone the repository: git clone [https://github.com/your-username/dAppTemplate.git](https://github.com/your-username/dAppTemplate.git)
--Install dependencies in each folder: - client: `npm install` - server: `npm install` - solidity: `npm install`
--Make necessary changes to the environment files in each folder.
--Run the application:
--In solidity repo: `npm run dev` // for development
--In server: `nodemon index.js`
--In client: `npm start`
+Clone the repository: git clone [https://github.com/shubham-verma-neo/dAppTemplate.git](https://github.com/shubham-verma-neo/dAppTemplate.git)
+- Install dependencies in each folder: <br/>
+    - client: `npm install` <br/>
+    - server: `npm install` <br/>
+    - solidity: `npm install`<br/>
+- Make necessary changes to the environment files in each folder.<br/>
+- Run the application:<br/>
+    - In solidity: `npm run dev` // for development<br/>
+    - In server: `nodemon index.js`<br/>
+    - In client: `npm start`<br/>
 
 # Contributing
 
