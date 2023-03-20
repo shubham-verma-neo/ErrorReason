@@ -6,7 +6,7 @@ Welcome to dAppTemplate - a simple and customizable template for creating fully 
 
 The Solidity section of this template includes a sample contract to demonstrate its functionality. This contract includes three public variables: `owner`, `randomAddress`, and `randomNumber`.
 
-Upon deployment, the owner variable is set to msg.sender. Additionally, two setter functions have been included - one to set the randomAddress, and the other to set the * `. Feel free to modify the contract and add additional functionality to suit your needs.
+Upon deployment, the owner variable is set to msg.sender. Additionally, two setter functions have been included - one to set the randomAddress, and the other to set the `randomNumber`. Feel free to modify the contract and add additional functionality to suit your needs.
 
 ## Client
 
