@@ -11,15 +11,19 @@ contract sample{
     }
 
     modifier onlyOwner(){
-        require(msg.sender == owner, "Only Owner.");
+        require(msg.sender == owner, "Only Owner."); 
         _;
     }
 
-    function setRandomAddress(address _randomAddress)public onlyOwner{
+    function setRandomAddress(address _randomAddress)public onlyOwner{ // in this case I should get revert reason "Only Owner."
         randomAddress = _randomAddress;
     }
 
-        function setRandomNumber(uint256 _randomNumber)public onlyOwner{
+        function setRandomNumber(uint256 _randomNumber)public onlyOwner{ // in this case I should get revert reason "Only Owner."
         randomNumber = _randomNumber;
     }
-}
+
+    function reverts() pure public { // in this case I am geting the revert reason
+        revert("Reverted with revert.");
+    }
+} 

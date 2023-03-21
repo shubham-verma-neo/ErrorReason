@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useMeta from '../MetamaskLogin/useMeta';
-import axios from "axios"
 
 export default function Sample() {
   const { state: { sampleContract, accounts } } = useMeta();
@@ -44,9 +43,20 @@ export default function Sample() {
       alert("Please enter valid address.");
       return;
     }
-    await sampleContract.methods.setRandomAddress(_randomAddre).send({ from: accounts[0] })
-      .then(e => console.log(e))
-      .catch(err => console.log(err));
+    try {
+      await sampleContract.methods.setRandomAddress(_randomAddre)
+        .send({
+          from: accounts[0],
+          gas: 100000,
+          handleRevert: true
+        })
+        .on('error', err => {
+          console.error(err)
+        });
+    }
+    catch (err) {
+      console.log(err);
+    }
     set_RandomAddre("");
   }
 
@@ -65,12 +75,50 @@ export default function Sample() {
   }
 
   const setRandomNum = async () => {
-    let response = await axios.post('http://localhost:4000/crypto/sample', {
-      address: accounts[0],
-      randomNumber: _randomNumber,
-    });
-    console.log(response);
+    if (!accounts) {
+      alert("Please Connect Wallet.");
+      return;
+    }
+    if (_randomNumber === "") {
+      alert("Please enter valid Number.");
+      return;
+    }
+    // try {
+    await sampleContract.methods.setRandomNumber(_randomNumber)
+      .send({
+        from: accounts[0],
+        gas: 100000,
+        handleRevert: true
+      })
+      .on('error', err => {
+        console.error(err)
+      });
+    // }
+    // catch (err) {
+    //   console.log(err);
+    // }
     set_RandomNumber("");
+  }
+
+  const reverts = async () => {
+    if (!accounts) {
+      alert("Please Connect Wallet.");
+      return;
+    }
+    try {
+      await sampleContract.methods.reverts()
+        .call({
+          from: accounts[0],
+          gas: 100000,
+          handleRevert: true
+        })
+        .on('error', err => {
+          console.error(err)
+        });
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -85,6 +133,7 @@ export default function Sample() {
       <button onClick={setRandomNum}>setRandomNumber</button><br />
       <input value={_randomAddre} onChange={_randomAddressHandler}></input>
       <button onClick={setRandomAddress}>setRandomAddress</button><br />
+      <button onClick={reverts}>reverts</button><br />
     </div>
   )
 }
