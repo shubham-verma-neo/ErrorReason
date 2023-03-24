@@ -51,11 +51,14 @@ export default function Sample() {
           handleRevert: true
         })
         .on('error', err => {
-          console.error(err)
+          console.error("err on ", err)
+          console.log("err.reason on", err.reason);
         });
     }
     catch (err) {
-      console.log(err);
+      console.log("err ", err);
+      console.log("err.reason ", err.reason);
+      console.log("JSON.stringify ", JSON.stringify(err, null, 2));
     }
     set_RandomAddre("");
   }
@@ -118,6 +121,7 @@ export default function Sample() {
     }
     catch (err) {
       console.log(err);
+      console.log(JSON.stringify(err, null, 2));
     }
   }
 
