@@ -12,6 +12,7 @@ function MetaProvider({ children }) {
         async (sampleArtifact) => {
             if (sampleArtifact) {
                 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+                web3.eth.handleRevert = true;
                 let accounts = null;
                 if (localStorage.getItem('Address')) {
                     accounts = await web3.eth.requestAccounts();

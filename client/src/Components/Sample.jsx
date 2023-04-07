@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useMeta from '../MetamaskLogin/useMeta';
 
 export default function Sample() {
-  const { state: { sampleContract, accounts } } = useMeta();
+  const { state: { sampleContract, accounts, web3 } } = useMeta();
 
   const [randomAddre, setRandomAddre] = useState("");
   const [_randomAddre, set_RandomAddre] = useState("");
@@ -48,14 +48,15 @@ export default function Sample() {
         .send({
           from: accounts[0],
           gas: 100000,
-          handleRevert: true
         })
         .on('error', err => {
+          console.log(".on('error', err => ")
           console.error("err on ", err)
           console.log("err.reason on", err.reason);
         });
     }
     catch (err) {
+      console.log("catch (err)")
       console.log("err ", err);
       console.log("err.reason ", err.reason);
       console.log("JSON.stringify ", JSON.stringify(err, null, 2));
@@ -91,7 +92,6 @@ export default function Sample() {
       .send({
         from: accounts[0],
         gas: 100000,
-        handleRevert: true
       })
       .on('error', err => {
         console.error(err)
@@ -113,7 +113,6 @@ export default function Sample() {
         .call({
           from: accounts[0],
           gas: 100000,
-          handleRevert: true
         })
         .on('error', err => {
           console.error(err)
